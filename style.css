@@ -1,0 +1,21 @@
+#ban-co {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    margin: 10px;
+}
+
+#ban-co,
+tr,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td{
+    width: 50px;
+    text-align: center;
+}
+
+input {
+    width: 60px;
+}
