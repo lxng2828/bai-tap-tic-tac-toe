@@ -30,6 +30,17 @@ btn.addEventListener("click", function () {
     let toaDoCot = document.getElementById("toa-do-cot").value;
     let giaTri = document.getElementById("gia-tri").value;
 
+    if (toaDoHang >= doDaiCanhBanCo && toaDoCot >= doDaiCanhBanCo) {
+        document.getElementById("ket-qua").innerText = "gia tri toa do khong hop le";
+        return;
+    }
+
+    document.getElementById("ket-qua").innerText = "";
+    if (banCo[toaDoHang][toaDoCot] !== ".") {
+        document.getElementById("ket-qua").innerText = "o nay da co gia tri, hay nhap o khac";
+        return;
+    }
+
     banCo[toaDoHang][toaDoCot] = giaTri;
     console.log(banCo);
     hienThiBanCo();
@@ -38,10 +49,10 @@ btn.addEventListener("click", function () {
     for (let i = 0; i < doDaiCanhBanCo; i++) {
         for (let j = 0; j < doDaiCanhBanCo; j++) {
             if (
-                (j + 2 < doDaiCanhBanCo && banCo[i][j] == "X" && banCo[i][j + 1] == "X" && banCo[i][j + 2] == "X") ||  // Ngang
-                (i + 2 < doDaiCanhBanCo && banCo[i][j] == "X" && banCo[i + 1][j] == "X" && banCo[i + 2][j] == "X") ||  // Dọc
-                (i + 2 < doDaiCanhBanCo && j + 2 < doDaiCanhBanCo && banCo[i][j] == "X" && banCo[i + 1][j + 1] == "X" && banCo[i + 2][j + 2] == "X") || // Chéo xuôi
-                (i - 2 >= 0 && j + 2 < doDaiCanhBanCo && banCo[i][j] == "X" && banCo[i - 1][j + 1] == "X" && banCo[i - 2][j + 2] == "X")  // Chéo ngược
+                (j + 2 < doDaiCanhBanCo && banCo[i][j] == "X" && banCo[i][j + 1] == "X" && banCo[i][j + 2] == "X") ||
+                (i + 2 < doDaiCanhBanCo && banCo[i][j] == "X" && banCo[i + 1][j] == "X" && banCo[i + 2][j] == "X") ||
+                (i + 2 < doDaiCanhBanCo && j + 2 < doDaiCanhBanCo && banCo[i][j] == "X" && banCo[i + 1][j + 1] == "X" && banCo[i + 2][j + 2] == "X") ||
+                (i - 2 >= 0 && j + 2 < doDaiCanhBanCo && banCo[i][j] == "X" && banCo[i - 1][j + 1] == "X" && banCo[i - 2][j + 2] == "X")
             ) {
                 document.getElementById("ket-qua").innerText = "X đã giành chiến thắng";
                 return;
@@ -62,7 +73,6 @@ btn.addEventListener("click", function () {
 
 
 })
-
 
 
 
